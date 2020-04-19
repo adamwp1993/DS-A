@@ -1,5 +1,6 @@
 # Fibonacci Sequence is a mathematical sequence of numbers where a number is equal to the sum of the two previous
 # numbers in the array
+# Iterative approach
 
 
 def compute_nth_fib(index_to_find):
