@@ -1,0 +1,29 @@
+# Binary Search
+# A Binary search takes an ordered list as input
+# It starts at the middle position, and if element is not found, goes to the middle of the sublist
+def binary_search(ordered_list, search_val):
+    """returns the index of the searched value, if it exists. requires ordered list as input"""
+    low = 0
+    mid = len(ordered_list) // 2
+    high = len(ordered_list) - 1
+    iterations = 0
+
+    while low <= high:
+        # check middle position
+        iterations += 1
+        mid = (low + high) // 2
+        if ordered_list[mid] == int(search_val):
+            print("Found in " + str(iterations) + " iterations.")
+            return mid
+        elif ordered_list[mid] < int(search_val):
+            low = mid + 1
+        elif ordered_list[mid] > int(search_val):
+            high = mid - 1
+
+    return "Not Found"
+
+
+test_array = [1, 2, 3, 4, 5, 8, 12, 24, 31, 49, 53, 62, 75, 89, 94, 100]
+
+search_for = input("Input a number between 1 and 100 to look for: ")
+print(str(binary_search(test_array, search_for)))
