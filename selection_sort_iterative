@@ -1,0 +1,20 @@
+#  Selection sort breaks the array into two pieces, sorted and unsorted 
+ 
+def selection_sort(selection_sort_array):
+
+    for i in range(0, len(selection_sort_array) - 1):  # outer loop holds index that will be sorted next in the list
+        min_val_index = i
+        for j in range(i + 1, len(selection_sort_array)): # inner loop checks
+            if selection_sort_array[j] < selection_sort_array[min_val_index]:
+                min_val_index = j
+
+        # swap
+        temp_num = selection_sort_array[i]
+        selection_sort_array[i] = selection_sort_array[min_val_index]
+        selection_sort_array[min_val_index] = temp_num
+
+    return selection_sort_array
+
+
+select_array = [99, 23, 34, 93, 65, 74]
+print(str(selection_sort(select_array)))
