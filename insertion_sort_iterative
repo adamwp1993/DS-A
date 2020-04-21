@@ -1,0 +1,16 @@
+# Insertion sort also breaks the array into sorted + unsorted 
+# while the element at the index is less than the position in front of it, swap it out and move it to the front 
+
+def insertion_sort(insert_array):
+    for i in range(1, len(insert_array) - 1): # outer loop, element at position 0 is assumed to be sorted
+        j = i
+        while j > 0 and insert_array[j] < insert_array[j - 1]:
+            temp = insert_array[j]
+            insert_array[j] = insert_array[j - 1]
+            insert_array[j - 1] = temp
+            j -= 1
+
+    return insert_array
+
+
+print(str(insertion_sort(select_array)))
