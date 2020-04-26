@@ -1,0 +1,54 @@
+# QuickSort
+# Recursive Algorithm
+# the Algorithm finds a "pivot" and partitions the array by putting all less than ints left and greater than right.
+# it then recursively calls the partition logic on the sub arrays on the left and right until the array is sorted.
+# this is an in place algorithm so we dont make any new array, all modifications are done on the existing one.
+# Best case Runtime: O(N log N)
+# Worst case Runtime: O(N^2)
+
+quick_sort_array = [3, 8, 7, 5, 1, 4, 2, 6]
+
+
+def quick_sort(array, start_index, end_index):
+    if end_index <= start_index:
+        return
+    # partition the list, return the pivot
+    pivot = partition(array, start_index, end_index)
+    # Recursively sort the left index
+    quick_sort(array, start_index, pivot)
+    # Recursively sort the right index
+    quick_sort(array, pivot + 1, end_index)
+
+
+def partition(array, start_index, end_index):
+    low = start_index
+    high = end_index
+    # increment low until you get an element bigger than pivot
+    # then increment J until you get an element smaller than pivot
+    # Once you do that, swap them
+    pivot = (low + high) // 2
+    loop_flag = False
+    while not loop_flag:
+
+        while array[pivot] > array[low]:  # Iterate
+            low += 1
+
+        while array[pivot] < array[high]:
+            high -= 1
+
+        # If low is more than or equal to high, then we've made it through without finding any swaps
+
+        if low >= high:
+            loop_flag = True
+        else:
+            temp_val = array[low]
+            array[low] = array[high]
+            array[high] = temp_val
+            low += 1
+            high -= 1
+
+    return high
+
+print("Before quick sort: " + str(quick_sort_array))
+quick_sort(quick_sort_array, 0, (len(quick_sort_array) - 1))
+print("After quick sort: " + str(quick_sort_array))
