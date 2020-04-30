@@ -1,0 +1,61 @@
+# Merge sort
+# Recursive Algorithm
+# creates two partitions and sorts them recursively
+# Not an in-place algorithm
+# O(N logN)
+# Essentially we are breaking the array down fully then putting it back together in order.
+
+def merge_sort(array, start_index, end_index):
+    if(start_index >= end_index):
+        return
+
+    mid_point = (start_index + end_index) // 2
+
+    merge_sort(array, start_index, mid_point)
+    merge_sort(array, mid_point + 1, end_index)
+    merge_partitions(array, start_index, mid_point, end_index)
+
+
+def merge_partitions(array, start_index, mid_point, end_index):
+    # Copy the left and Right halves
+
+    merged_size = end_index - start_index + 1   # get the size of the partition
+    merged_array = [0] * merged_size           # create the temp array
+    merge_position = 0
+    low = start_index                 # these variables represent where the partitions starts
+    high = mid_point + 1
+
+    # add the smallest element from left or right partition to merged numbers
+    while low <= mid_point and high <= end_index:
+        if array[low] <= array[high]:
+            merged_array[merge_position] = array[low]
+            low += 1
+        else:
+            merged_array[merge_position] = array[high]
+            high += 1
+        merge_position += 1
+
+    # If the left partition is not empty after we've reached bounds above (i.e one partition bigger than other)
+    # We just add the remaining elements into the sorted array
+
+    # Left side:
+    while low <= mid_point:
+        merged_array[merge_position] = array[low]
+        low += 1
+        merge_position += 1
+
+    # Right side
+    while high <= end_index:
+        merged_array[merge_position] = array[high]
+        high += 1
+        merge_position += 1
+
+    # copy over the original
+    for merge_position in range(merged_size):
+        array[start_index + merge_position] = merged_array[merge_position]
+
+
+merge_sort_array = [99, 23, 54, 81, 12, 3, 56, 51, 62, 39]
+print("Before Merge Sort: " + str(merge_sort_array))
+merge_sort(merge_sort_array, 0, len(merge_sort_array) - 1)
+print("After Merge Sort: " + str(merge_sort_array))
