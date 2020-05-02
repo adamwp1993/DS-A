@@ -1,6 +1,8 @@
 # Binary Search
 # A Binary search takes an ordered list as input
 # It starts at the middle position, and if element is not found, goes to the middle of the sublist
+
+
 def binary_search(ordered_list, search_val):
     """returns the index of the searched value, if it exists. requires ordered list as input"""
     low = 0
