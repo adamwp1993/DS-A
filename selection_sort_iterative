@@ -1,4 +1,6 @@
 #  Selection sort breaks the array into two pieces, sorted and unsorted 
+#  For each value in the array, check the unsorted half for the smallest value there. Once its found, move it to the front  
+ 
  
 def selection_sort(selection_sort_array):
 
