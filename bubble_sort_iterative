@@ -1,0 +1,17 @@
+# Bubble sort is not fast, it only moves adjacent elements. its best/worst case runtime are the same, O(n^2)
+
+
+def bubble_sort(array):
+    for i in range(len(array) - 1):
+        for j in range(len(array) - i - 1):
+            if array[j] > array[j + 1]:
+                temp = array[j]
+                array[j] = array[j + 1]
+                array[j + 1] = temp
+        
+    return
+
+bubble_sort_array = [23, 98, 75, 12, 63, 9]
+print("Before Bubble Sort: " + str(bubble_sort_array))
+bubble_sort(bubble_sort_array)
+print("After Bubble Sort: " + str(bubble_sort_array))
